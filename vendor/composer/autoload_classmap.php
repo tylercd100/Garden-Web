@@ -18,7 +18,7 @@ return array(
     'ClassPreloader\\Parser\\DirVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/DirVisitor.php',
     'ClassPreloader\\Parser\\FileVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/FileVisitor.php',
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
-    'Conditions' => $baseDir . '/app/database/migrations/2013_11_03_003910_conditions.php',
+    'Conditions' => $baseDir . '/app/database/migrations/2013_11_03_004116_conditions.php',
     'CreateDevicesTable' => $baseDir . '/app/database/migrations/2013_10_18_202551_create_devices_table.php',
     'CreateSchedulesTable' => $baseDir . '/app/database/migrations/2013_10_19_005759_create_schedules_table.php',
     'CreateUsersTable' => $baseDir . '/app/database/migrations/2013_10_18_200230_create_users_table.php',

@@ -22,7 +22,6 @@ class ComposerAutoloaderInit9276f9f4a3acf23dc8abde323e88dea4
         spl_autoload_register(array('ComposerAutoloaderInit9276f9f4a3acf23dc8abde323e88dea4', 'loadClassLoader'), true, true);
         self::$loader = $loader = new \Composer\Autoload\ClassLoader();
         spl_autoload_unregister(array('ComposerAutoloaderInit9276f9f4a3acf23dc8abde323e88dea4', 'loadClassLoader'));
-
         $vendorDir = dirname(__DIR__);
         $baseDir = dirname($vendorDir);
 
