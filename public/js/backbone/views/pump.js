@@ -10,7 +10,7 @@ define([
     	this.model.on('change',this.render,this);
     },
     template: _.template([
-      '<h2><%= device.get(\'name\') %> <span class="capitalize"><%= device.get(\'type\') %></span></h2>',
+      '<h2><%= device.get(\'name\') %></h2>',
       '<div class="btn-group">',
         '<button type="button" attribute="state" class="btn <%= (device.get(\'state\') == 1 ? \'btn-primary\' : \'btn-default\') %> btn-lg">On</button>',
         '<button type="button" attribute="state" class="btn <%= (device.get(\'state\') == 0 ? \'btn-primary\' : \'btn-default\') %> btn-lg">Off</button>',
