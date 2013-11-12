@@ -10,11 +10,8 @@ window.Meta.schedules = {{ $schedules }};
 </script>
     <div id="header-region"></div>
 
-    <div id="main-region" class="container">
-      <p>Here is static content in the web page. You'll notice that it gets replaced by our app as soon as we start it.</p>
+    <div id="main-region" class="center-block" >
     </div>
-
-    <svg><circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red"></circle></svg>
 
     <div id="dialog-region"></div>
 
@@ -88,8 +85,36 @@ window.Meta.schedules = {{ $schedules }};
     </script>
 
     <script type="text/template" id="overview-main">
-      <div>Devices</div>
-      <div>Sensors</div>
+    <img src="/img/background.jpg" style="
+        position: absolute;
+        margin: fixed;
+        width: 2000px;
+        left: 50%;    
+        margin-left: -1000px;
+        top: -350px;
+        -webkit-filter: blur(3px);
+    ">
+    <div class="center-block" style="width:1100px;position:relative;">
+    <embed src="/svg/greenhouse.svg" type="image/svg+xml" class="center-block greenhouse" style="width:1040px;" />
+      <div class="window inside">
+        <h2>Inside</h2>
+        <div data-toggle="tooltip" title="Inside Temperature" class="has-tooltip box sensor"><img src="/img/temperature_w.png" class="icon"/><div class="info">80F</div></div>
+        <div data-toggle="tooltip" title="Inside Humidity" class="has-tooltip box sensor"><img src="/img/water_w.png" class="icon"/><div class="info">30%</div></div>
+        <div data-toggle="tooltip" title="Inside Light" class="has-tooltip box device off"><img src="/img/sun_w.png" class="icon"/><div class="info">Off</div></div>
+        <div data-toggle="tooltip" title="Inside Pump" class="has-tooltip box device off"><img src="/img/water_w.png" class="icon"/><div class="info">Off</div></div>
+        <div data-toggle="tooltip" title="Inside Fan" class="has-tooltip box device on"><img src="/img/fan_w.png" class="icon"/><div class="info">On</div></div>
+        <div data-toggle="tooltip" title="Inside Heater" class="has-tooltip box device off"><img src="/img/hot_w.png" class="icon"/><div class="info">Off</div></div>
+      </div>
+      <div class="window outside">
+        <h2>Outside</h2>
+        <div data-toggle="tooltip" title="Outside Temperature" class="has-tooltip box sensor"><img src="/img/temperature_w.png" class="icon"/><div class="info">70F</div></div>
+      </div>
+      <div class="window underground">
+        <h2>Ground</h2>
+        <div data-toggle="tooltip" title="Ground Temperature" class="has-tooltip box sensor"><img src="/img/temperature_w.png" class="icon"/><div class="info">67F</div></div>
+        <div data-toggle="tooltip" title="Ground Fan" class="has-tooltip box device off"><img src="/img/fan_w.png" class="icon"/><div class="info">Off</div></div>
+      </div>
+    </div>
     </script>
 
     <script type="text/template" id="device-form">
@@ -142,6 +167,7 @@ window.Meta.schedules = {{ $schedules }};
     <script src="/js/vendor/backbone.marionette.js"></script>
     <script src="/js/vendor/spin.js"></script>
     <script src="/js/vendor/spin.jquery.js"></script>
+    <script src="/js/vendor/bootstrap.min.js"></script>
 
     <script src="/js/apps/config/marionette/regions/dialog.js"></script>
     <script src="/js/app.js"></script>
@@ -175,5 +201,18 @@ window.Meta.schedules = {{ $schedules }};
 
     <script type="text/javascript">
       App.start();
+
+      $(function(){
+        resize();
+      })
+
+      $(window).resize(resize);
+
+      function resize(){
+        var h = $(window).height();
+        console.log(h)
+        $('#main-region').height(h);
+      }
     </script>
+
 @stop
