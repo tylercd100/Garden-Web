@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Conditions extends Migration {
+class CreateConditionsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -15,6 +15,12 @@ class Conditions extends Migration {
 		Schema::create('conditions', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('type'); //value || sensor_id || comp_sensor_id
+			$table->integer('device_id');
+			$table->integer('sensor_id');
+			$table->string('operator');// < = >
+			$table->integer('value');
+			$table->integer('comp_sensor_id');
 			$table->timestamps();
 		});
 	}
@@ -30,3 +36,6 @@ class Conditions extends Migration {
 	}
 
 }
+
+// if sensor value is >=< to set value
+// if sensor value is >=< to dif sensor value

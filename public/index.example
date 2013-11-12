@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cafe Zupas</title>
+    <link href="./css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet/less" type="text/css" href="./css/style.less" />
+    <script src="./js/lib/less.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <table id="layout">
+      <tr>
+        <td id="logo-region" rowspan="1">
+          <img id="logo" class="" src="/img/logo.png" />
+          
+        </td>
+        <td id="menu-region">
+          <ul class="nav">
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-camera"></span><span class="txt">Collage</span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-facetime-video"></span><span class="txt">Video</span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-time"></span><span class="txt">Timeline</span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-link"></span><span class="txt">References</span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-file"></span><span class="txt">Documents</span></a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span><span class="txt">Information</span></a></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td id="navigation-region" >
+          <ul class="nav">
+            <li><a href="#">Welcome</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li class="active"><a href="#">Profile</a></li>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Stats</a></li>
+            <li><a href="#">Tools</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </td>
+        <td id="main-region">Main
+          <p>Here is static content in the web page. You'll notice that it gets replaced by our app as soon as we start it.</p>
+        </td>
+
+      </tr>
+    </table>
+
+    
+    <!-- Menu Templates -->
+    <script type="text/template" id="menu-template">
+    </script>
+
+    <script type="text/template" id="menu-link">
+      <a href="#<%= url %>">
+        <span class="glyphicon glyphicon-<%= icon %>"></span><span class="txt"><%= name %></span>
+      </a>
+    </script>
+
+    <!-- Navigation Templates -->
+    <script type="text/template" id="navigation-template">
+    </script>
+
+    <script type="text/template" id="navigation-link">
+      <a href="#<%= url %>"><%= name %></a>
+    </script>
+
+    <!-- Welcome Templates -->
+    <script type="text/template" id="welcome-message">
+      Welcome!
+    </script>
+
+    <!-- Profile Collage Templates -->
+    <script type="text/template" id="profile-collage-main">
+      Profile Collage!
+    </script>
+
+    <!-- Profile Timeline Templates -->
+    <script type="text/template" id="profile-timeline-main">
+      Profile Timeline!
+    </script>
+
+    <script src="./js/lib/jquery.js"></script>
+    <script src="./js/lib/json2.js"></script>
+    <script src="./js/lib/underscore.js"></script>
+    <script src="./js/lib/backbone.js"></script>
+    <script src="./js/lib/backbone.picky.js"></script>
+    <script src="./js/lib/backbone.syphon.js"></script>
+    <script src="./js/lib/backbone.localstorage.js"></script>
+    <script src="./js/lib/backbone.marionette.js"></script>
+    <script src="./js/lib/spin.js"></script>
+    <script src="./js/lib/spin.jquery.js"></script>
+
+    <script type="text/javascript">
+    $(function(){
+      $('#layout').height($(window).height());
+      $(window).resize(function(){$('#layout').height($(window).height());})
+    })
+    </script>
+
+    <script src="./js/app.js"></script>
+
+    <!-- Entities -->
+    <script src="./js/entities/navigation.js"></script>
+    <script src="./js/entities/menu.js"></script>
+
+    <!-- Navigation App -->
+    <script src="./js/apps/navigation/navigation_app.js"></script>
+    <script src="./js/apps/navigation/list/list_view.js"></script>
+    <script src="./js/apps/navigation/list/list_controller.js"></script>
+    
+    <script type="text/javascript">
+      App.start();
+    </script>
+  </body>
+</html>
