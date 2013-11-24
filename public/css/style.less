@@ -1,0 +1,92 @@
+@red:#b41029;
+
+.animate{
+	-webkit-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+	-moz-transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+	transition: all 0.2s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+
+body {
+    background-color: white;
+    color: black;
+}
+
+body > #layout{
+	width: 100%;
+	height: 100%;
+	// min-width: 1024px;
+	// min-height: 768px;
+
+	#logo-region{
+		border-bottom: 10px solid @red;
+		width: 100px;
+		height: 10px;
+		#logo{
+			padding: 1em 2em;
+			width: auto;
+			line-height: 1em;
+		}
+	}
+	#navigation-region{
+		background-color: #333;
+		.nav{
+			li{
+				a {
+					.animate;
+					padding-left:2em;
+					color: white;
+					&:hover{
+						background-color: #666;
+					}
+				}
+
+				&.active{
+					background-color: @red;
+					a{
+						color: white;
+					}
+				}
+			}
+		}
+	}
+	#menu-region{ 
+		padding: 0;
+		border-bottom: 10px solid @red;
+		.nav{
+			padding: 0em 2em;
+			text-align: right;
+			li{
+				font-size: 24px;
+				display: inline-block;
+				a {
+					.animate;
+					line-height: 1em;
+					padding: 1em;
+					color: #666;
+					.txt{
+						.animate;
+						display: none;
+						margin-left: 0.5em;
+					}
+				}
+
+				&.active{
+					background-color: @red;
+					a{
+						color: white;
+						&:hover{
+							color: #666;
+						}
+						.txt{
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
+	}
+	#main-region{
+		background-color: #eee;
+		text-align: center;
+	}
+}

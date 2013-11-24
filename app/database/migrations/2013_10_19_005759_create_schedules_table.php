@@ -17,7 +17,7 @@ class CreateSchedulesTable extends Migration {
 	        $table->integer('device_id');
 	        $table->integer('minute')->default(0);
 	        $table->integer('hour')->default(0);
-	        $table->string('day')->default(0);
+	        $table->integer('day')->default(0);
 	        $table->integer('date')->default(0);
 	        $table->integer('month')->default(0);
 	        $table->integer('duration')->default(1);

@@ -4,4 +4,8 @@ class Device extends Eloquent {
     {
         return $this->hasMany('Schedule');
     }
+    public function conditions()
+    {
+        return $this->hasMany('Condition');
+    }
 }

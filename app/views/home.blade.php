@@ -8,29 +8,172 @@ window.Meta.devices = {{ $devices }};
 window.Meta.schedules = {{ $schedules }};
 
 </script>
-<script data-main="js/backbone/main" src="js/backbone/libs/require.js"></script>
-<div class="container" style="margin:40px auto;">
-    <div class="row">
-        <div class="col-md-3">
-            <img src="img/sun.png" class="pull-right"/>
-        </div>
-        <div class="col-md-9" holds="device-light-view">
-        </div>
+    <div id="header-region"></div>
+
+    <div id="main-region" class="container">
+      <p>Here is static content in the web page. You'll notice that it gets replaced by our app as soon as we start it.</p>
     </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-3">
-            <img src="img/water.png" class="pull-right"/>
+
+    <svg><circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red"></circle></svg>
+
+    <div id="dialog-region"></div>
+
+    <script type="text/template" id="header-template">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#devices">Garden HQ</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav"></ul>
+          </div>
         </div>
-        <div class="col-md-9" holds="device-pump-view">
+      </div>
+    </script>
+
+    <script type="text/template" id="header-link">
+      <a href="#<%= url %>"><%= name %></a>
+    </script>
+
+    <script type="text/template" id="device-list">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </script>
+
+    <script type="text/template" id="device-list-none">
+      <td colspan="3">No devices to display.</td>
+    </script>
+
+    <script type="text/template" id="device-list-item">
+      <td><%= name %></td>
+      <td><%= type %></td>
+      <td>
+        <a href="#devices/<%= id %>" class="btn btn-small js-show">
+          <i class="icon-eye-open"></i>
+          Show
+        </a>
+        <a href="#devices/<%= id %>/edit" class="btn btn-small js-edit">
+          <i class="icon-pencil"></i>
+          Edit
+        </a>
+        <button class="btn btn-small js-delete">
+          <i class="icon-remove"></i>
+          Delete
+        </button>
+      </td>
+    </script>
+
+    <script type="text/template" id="missing-device-view">
+      <div class="alert alert-error">This device doesnt exist !</div>
+    </script>
+
+    <script type="text/template" id="device-view">
+      <h1><%= name %> <%= type %></h1>
+      <a href="#devices/<%= id %>/edit" class="btn btn-small js-edit">
+        <i class="icon-pencil"></i>
+        Edit this device
+      </a>
+      <p><strong>Pin #:</strong> <%= pin %></p>
+    </script>
+
+    <script type="text/template" id="loading-view">
+      <h1><%= title %></h1>
+      <p><%= message %></p>
+      <div id="spinner"></div>
+    </script>
+
+    <script type="text/template" id="overview-main">
+      <div>Devices</div>
+      <div>Sensors</div>
+    </script>
+
+    <script type="text/template" id="device-form">
+      <form>
+        <div class="control-group">
+          <label for="device-name" class="control-label">Name:</label>
+          <input id="device-name" name="name" type="text" value="<%= name %>"/>
         </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-3">
+        <div class="control-group">
+          <label for="device-type" class="control-label">Type:</label>
+          <input id="device-type" name="type" type="text" value="<%= type %>"/>
         </div>
-        <div class="col-md-9" holds="sensor-view">
+        <div class="control-group">
+          <label for="device-pin" class="control-label">Pin #:</label>
+          <input id="device-pin" name="pin" type="text" value="<%= pin %>"/>
         </div>
-    </div>
-</div>
+        <button class="btn js-submit">Save</button>
+      </form>
+    </script>
+
+    <script type="text/template" id="device-list-layout">
+      <div id="panel-region"></div>
+      <div id="devices-region"></div>
+    </script>
+
+    <script type="text/template" id="device-list-panel">
+      <button class="btn btn-primary js-new">New device</button>
+      <form id="filter-form" class="form-search form-inline pull-right">
+        <div class="input-append">
+          <input type="text" class="span2 search-query js-filter-criterion">
+          <button type="submit" class="btn">Filter devices</button>
+        </div>
+      </form>
+    </script>
+
+    <script type="text/template" id="about-message">
+      <h1>About this application</h1>
+      <p>This application was designed to accompany you during your learning.</p>
+      <p>Hopefully, it has served you well !</p>
+    </script>
+
+    <script src="/js/vendor/jquery.js"></script>
+    <script src="/js/vendor/jquery-ui-1.10.3.js"></script>
+    <script src="/js/vendor/json2.js"></script>
+    <script src="/js/vendor/underscore.js"></script>
+    <script src="/js/vendor/backbone.js"></script>
+    <script src="/js/vendor/backbone.picky.js"></script>
+    <script src="/js/vendor/backbone.syphon.js"></script>
+    <script src="/js/vendor/backbone.localstorage.js"></script>
+    <script src="/js/vendor/backbone.marionette.js"></script>
+    <script src="/js/vendor/spin.js"></script>
+    <script src="/js/vendor/spin.jquery.js"></script>
+
+    <script src="/js/apps/config/marionette/regions/dialog.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/apps/config/storage/localstorage.js"></script>
+    <script src="/js/entities/common.js"></script>
+    <script src="/js/entities/header.js"></script>
+    <script src="/js/entities/device.js"></script>
+    <script src="/js/common/views.js"></script>
+
+    <script src="/js/apps/devices/devices_app.js"></script>
+    <script src="/js/apps/devices/common/views.js"></script>
+    <script src="/js/apps/devices/list/list_view.js"></script>
+    <script src="/js/apps/devices/list/list_controller.js"></script>
+    <script src="/js/apps/devices/show/show_view.js"></script>
+    <script src="/js/apps/devices/show/show_controller.js"></script>
+    <script src="/js/apps/devices/edit/edit_view.js"></script>
+    <script src="/js/apps/devices/edit/edit_controller.js"></script>
+    <script src="/js/apps/devices/new/new_view.js"></script>
+
+    <script src="/js/apps/about/about_app.js"></script>
+    <script src="/js/apps/about/show/show_view.js"></script>
+    <script src="/js/apps/about/show/show_controller.js"></script>
+
+    <script src="/js/apps/overview/overview_app.js"></script>
+    <script src="/js/apps/overview/show/show_view.js"></script>
+    <script src="/js/apps/overview/show/show_controller.js"></script>
+
+    <script src="/js/apps/header/header_app.js"></script>
+    <script src="/js/apps/header/list/list_view.js"></script>
+    <script src="/js/apps/header/list/list_controller.js"></script>
+
+    <script type="text/javascript">
+      App.start();
+    </script>
 @stop

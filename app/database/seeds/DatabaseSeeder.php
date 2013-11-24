@@ -18,6 +18,16 @@ class DatabaseSeeder extends Seeder {
 		
 		$this->call('ScheduleTableSeeder');
 		$this->command->info('Schedule table seeded!');
+
+		Eloquent::unguard();
+		
+		$this->call('SensorTableSeeder');
+		$this->command->info('Sensor table seeded!');
+
+		Eloquent::unguard();
+		
+		$this->call('ConditionTableSeeder');
+		$this->command->info('Condition table seeded!');
 	}
 
 }

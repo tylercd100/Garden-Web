@@ -5,6 +5,9 @@ define([
 	'collections/devices',
 	'collections/schedules',
 	'views/light',
+	'views/fan',
+	'views/motor',
+	'views/heater',
 	'views/schedule',
 	'views/pump',
 	'views/device',
@@ -15,6 +18,9 @@ define([
 	DevicesCollection,
 	SchedulesCollection,
 	LightView,
+	FanView,
+	MotorView,
+	HeaterView,
 	ScheduleView,
 	PumpView,
 	DeviceView
@@ -36,9 +42,16 @@ define([
 				v = new LightView({model: model});
 			else if(model.get('type') == 'pump')
 				v = new PumpView({model: model});
-			else
+			else if(model.get('type') == 'fan')
+				v = new FanView({model: model});
+			else if(model.get('type') == 'motor')
+				v = new MotorView({model: model});
+			else if(model.get('type') == 'heater')
+				v = new HeaterView({model: model});
+			else{
+				alert(model.get('type'))
 				v = new DeviceView({model: model});
-
+			}
 			$('[holds=device-'+model.get('type')+'-view]').append(v.render().el);
 
 			_.each(model.schedules.models,function(sch){
