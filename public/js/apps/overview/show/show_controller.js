@@ -49,13 +49,40 @@ App.module("Overview.Show", function(Show, App, Backbone, Marionette, $, _){
 					layoutView.on('show',function(){
 						layoutView.deviceRegion.show(devicesView);
 						layoutView.sensorRegion.show(sensorsView);
-						layoutView.$el.find('.has-tooltip').tooltip({placement:'bottom'})
+						layoutView.$el.find('.has-tooltip').tooltip({placement:'bottom'});
+
+						sensorsView.on('all',function(){
+							console.log(arguments);
+						})
+
+						var timeout;
+
+						function dothis(){
+							var devices = App.request("entities:device");
+							var sensors = App.request("entities:sensor");
+
+							$.when(devices,sensors).then(function(devices,sensors){
+								sensorsView.collection.reset(sensors.where({location: l})); 
+								devicesView.collection.reset(devices.where({location: l})); 
+								timeout = setTimeout(dothis,5000);
+							});
+						
+						}
+						
+						timeout = setTimeout(dothis,5000);
+
+						layoutView.on('close',function(){
+							clearTimeout(timeout);
+						})
+						
 					});
 
 					//render layout for this location when the main view is shown
 					view.on('show',function(){
 						view[l+"Region"].show(layoutView);
 					});
+
+
 				});
 
 				view.on('render',function(){

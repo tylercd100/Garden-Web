@@ -23,6 +23,10 @@ App.module("Overview.Show", function(Show, App, Backbone, Marionette, $, _){
 	Show.Sensor = Marionette.ItemView.extend({
 		template: "#overview-sensor",
 		className: "sensor",
+		initialize:function(){
+			this.model.on('change',this.render,this);
+			this.model.on('all',function(){console.log(arguments)});
+		}
 	});
 
 	Show.Device = Marionette.ItemView.extend({
@@ -34,6 +38,7 @@ App.module("Overview.Show", function(Show, App, Backbone, Marionette, $, _){
 		template: "#overview-sensors",
 		className: "sensors",
 		itemView: Show.Sensor,
+
 	});
 
 	Show.Devices = Marionette.CollectionView.extend({
