@@ -89,7 +89,8 @@ window.Meta.schedules = {{ $schedules }};
     </script>
 
     <script type="text/template" id="overview-device">
-      <div data-toggle="tooltip" title="<%= name %>" class="has-tooltip box device <%= (state ? 'on' : 'off') %>"><img src="/img/<%= type %>_w.png" class="icon"/><div class="info"><%= (state ? 'On' : 'Off') %></div></div>
+      <% console.log(state, arguments); %>
+      <div data-toggle="tooltip" title="<%= name %>" class="has-tooltip box device <%= (state == '1' ? 'on' : 'off') %>"><img src="/img/<%= type %>_w.png" class="icon"/><div class="info"><%= (state == '1' ? 'On' : 'Off') %></div></div>
     </script>
 
     <script type="text/template" id="overview-main">

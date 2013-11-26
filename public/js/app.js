@@ -22,7 +22,7 @@ App.on("initialize:after", function(){
     Backbone.history.start();
 
     if(this.getCurrentRoute() === ""){
-      App.trigger("devices:list");
+      App.trigger("overview:show");
     }
   }
 });
