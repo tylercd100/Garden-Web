@@ -3,6 +3,7 @@ App.module("Overview.Show", function(Show, App, Backbone, Marionette, $, _){
 		showOverview: function(){
 			var devices = App.request("entities:device");
 			var sensors = App.request("entities:sensor");
+			var refreshTime = 10000;
 
 			$.when(devices,sensors).then(function(devices,sensors){
 
@@ -51,12 +52,7 @@ App.module("Overview.Show", function(Show, App, Backbone, Marionette, $, _){
 						layoutView.sensorRegion.show(sensorsView);
 						layoutView.$el.find('.has-tooltip').tooltip({placement:'bottom'});
 
-						sensorsView.on('all',function(){
-							console.log(arguments);
-						})
-
 						var timeout;
-
 						function dothis(){
 							var devices = App.request("entities:device");
 							var sensors = App.request("entities:sensor");
@@ -64,12 +60,12 @@ App.module("Overview.Show", function(Show, App, Backbone, Marionette, $, _){
 							$.when(devices,sensors).then(function(devices,sensors){
 								sensorsView.collection.reset(sensors.where({location: l})); 
 								devicesView.collection.reset(devices.where({location: l})); 
-								timeout = setTimeout(dothis,5000);
+								timeout = setTimeout(dothis,refreshTime);
 							});
 						
 						}
 						
-						timeout = setTimeout(dothis,5000);
+						timeout = setTimeout(dothis,refreshTime);
 
 						layoutView.on('close',function(){
 							clearTimeout(timeout);
@@ -83,10 +79,6 @@ App.module("Overview.Show", function(Show, App, Backbone, Marionette, $, _){
 					});
 
 
-				});
-
-				view.on('render',function(){
-					console.log(view)
 				});
 
 				//start it up
