@@ -4,50 +4,67 @@ App.module("Overview.Show", function(Show, App, Backbone, Marionette, $, _){
 			var devices = App.request("entities:device");
 			var sensors = App.request("entities:sensor");
 
-			var locations = ['inside','outside','ground'];
-			
-			var view = new Show.Main();
-			App.mainRegion.show(view);
-
 			$.when(devices,sensors).then(function(devices,sensors){
-				_.each(locations,function(location){
-					console.log(sensors)
-					var _sensors = sensors.where({'location':location});
-					var _devices = devices.where({'location':location});
 
-					_.each(_sensors,function(s){
-						console.log('here')
-						var v = new Show.Sensor({model: s});
-						v.model.on('change reset',v.render,v);
-						view.$el.find('.window.'+location).append(v.render().el);
+				//get a unique array of all locations
+				var loc = _.union([],devices.pluck('location'),sensors.pluck('location')) 
+
+				//create an array of location objects. [{name: 'location'}]
+				var locObjs = (function(){var l = [];_.each(loc,function(_loc){l.push({name:_loc});});return l;})();
+
+				//create new location collection
+				var locations = new Show.LocationCollection(locObjs);
+				var view = new Show.Main({collection: locations});
+
+				//filter collections by location
+				var collectionsByLocation = {};
+				var layoutByLocation = {};
+				_.each(loc,function(l){
+					var sensorsView,
+						devicesView,
+						sensorsCollection,
+						devicesCollection,
+						layoutView;
+
+					//get sensors and devices by location
+					var _sensors = sensors.where({location:l}); 
+					var _devices = devices.where({location:l}); 
+
+					//create unique collection objects
+					sensorsCollection = new Backbone.Collection();
+					devicesCollection = new Backbone.Collection();
+
+					//add sensors and devices to the collections
+					sensorsCollection.reset(_sensors);
+					devicesCollection.reset(_devices);
+
+					//collection views!
+					devicesView = new Show.Devices({collection: devicesCollection});
+					sensorsView = new Show.Sensors({collection: sensorsCollection});
+
+					//create location layout views
+					layoutView = new Show.Location();
+
+					//render sensors and devices when the layout is rendered
+					layoutView.on('show',function(){
+						layoutView.deviceRegion.show(devicesView);
+						layoutView.sensorRegion.show(sensorsView);
+						layoutView.$el.find('.has-tooltip').tooltip({placement:'bottom'})
 					});
 
-					_.each(_devices,function(d){
-						console.log('here')
-						var v = new Show.Device({model: d});
-						v.model.on('change reset',v.render,v);
-						view.$el.find('.window.'+location).append(v.render().el);
+					//render layout for this location when the main view is shown
+					view.on('show',function(){
+						view[l+"Region"].show(layoutView);
 					});
 				});
 
-				view.$el.find('.has-tooltip').tooltip({placement:'bottom'});
+				view.on('render',function(){
+					console.log(view)
+				});
 
-				refresh();
-
+				//start it up
+				App.mainRegion.show(view);
 			});
-
-			function refresh(){
-				var devices = App.request("entities:device");
-				var sensors = App.request("entities:sensor");
-				var timeout;
-				$.when(devices,sensors).then(function(){
-					timeout = setTimeout(refresh, 5000);
-					view.on('close',function(){
-						clearTimeout(timeout);
-					});
-				})
-				
-			};
 		}
 	};
 });

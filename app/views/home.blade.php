@@ -85,37 +85,27 @@ window.Meta.schedules = {{ $schedules }};
     </script>
 
     <script type="text/template" id="overview-sensor">
-      <div data-toggle="tooltip" title="<%= name %>" class="has-tooltip box sensor"><img src="/img/<%= type %>_w.png" class="icon"/><div class="info"><%= value %></div></div>
+      <div data-toggle="tooltip" title="<%= name %>" class="has-tooltip box sensor"><img src="/img/<%= type %>_w.png" class="icon"/><div class="info"><%= value %><%= (type == 'temperature' ? 'F' : '%') %></div></div>
     </script>
 
     <script type="text/template" id="overview-device">
-      <% console.log(state, arguments); %>
       <div data-toggle="tooltip" title="<%= name %>" class="has-tooltip box device <%= (state == '1' ? 'on' : 'off') %>"><img src="/img/<%= type %>_w.png" class="icon"/><div class="info"><%= (state == '1' ? 'On' : 'Off') %></div></div>
     </script>
 
     <script type="text/template" id="overview-main">
-    <img src="/img/background.jpg" style="
-        position: absolute;
-        margin: fixed;
-        width: 2000px;
-        left: 50%;    
-        margin-left: -1000px;
-        top: -350px;
-        -webkit-filter: blur(3px);
-    ">
-    <div class="center-block" style="width:1100px;position:relative;">
-    <embed src="/svg/greenhouse.svg" type="image/svg+xml" class="center-block greenhouse" style="width:1040px;" />
-      <div class="window inside">
-        <h2>Inside</h2>
-      </div>
-      <div class="window outside">
-        <h2>Outside</h2>
-      </div>
-      <div class="window underground">
-        <h2>Ground</h2>
-      </div>
-    </div>
+      <% _.each(items,function(i){ %>
+        <h2><%= i.name %></h2>
+        <div id="<%= i.name %>-region"><%= i.name %></div>
+      <% }) %>
     </script>
+
+    <script type="text/template" id="overview-location">
+      <div id="sensor-region"></div>
+      <div id="device-region"></div>
+    </script>
+
+    <script type="text/template" id="overview-devices"></script>
+    <script type="text/template" id="overview-sensors"></script>
 
     <script type="text/template" id="device-form">
       <form>
