@@ -12,8 +12,8 @@ class SensorTableSeeder extends Seeder {
         DB::table('sensors')->delete();
 
         // My Setup
-        // Sensor::create(array('pin'=>2,'location' => 'inside', 'name' => 'Inside Temperature',   'type' => 'temperature',	'value' => '70'));
-        // Sensor::create(array('pin'=>2,'location' => 'inside', 'name' => 'Inside Humidity',   'type' => 'humidity',	'value' => '70'));
+        Sensor::create(array('pin'=>2,'location' => 'inside', 'name' => 'Inside Temperature',   'type' => 'temperature',	'value' => '70'));
+        Sensor::create(array('pin'=>2,'location' => 'inside', 'name' => 'Inside Humidity',   'type' => 'humidity',	'value' => '70'));
         
         // My Dad's Setup
         // Sensor::create(array('pin'=>1, 	'name' => 'Inside Temperature',   'type' => 'temperature',	'value' => '70'));
