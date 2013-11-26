@@ -84,6 +84,14 @@ window.Meta.schedules = {{ $schedules }};
       <div id="spinner"></div>
     </script>
 
+    <script type="text/template" id="overview-sensor">
+      <div data-toggle="tooltip" title="<%= name %>" class="has-tooltip box sensor"><img src="/img/<%= type %>_w.png" class="icon"/><div class="info"><%= value %></div></div>
+    </script>
+
+    <script type="text/template" id="overview-device">
+      <div data-toggle="tooltip" title="<%= name %>" class="has-tooltip box device <%= (state ? 'on' : 'off') %>"><img src="/img/<%= type %>_w.png" class="icon"/><div class="info"><%= (state ? 'On' : 'Off') %></div></div>
+    </script>
+
     <script type="text/template" id="overview-main">
     <img src="/img/background.jpg" style="
         position: absolute;
@@ -98,21 +106,12 @@ window.Meta.schedules = {{ $schedules }};
     <embed src="/svg/greenhouse.svg" type="image/svg+xml" class="center-block greenhouse" style="width:1040px;" />
       <div class="window inside">
         <h2>Inside</h2>
-        <div data-toggle="tooltip" title="Inside Temperature" class="has-tooltip box sensor"><img src="/img/temperature_w.png" class="icon"/><div class="info">80F</div></div>
-        <div data-toggle="tooltip" title="Inside Humidity" class="has-tooltip box sensor"><img src="/img/water_w.png" class="icon"/><div class="info">30%</div></div>
-        <div data-toggle="tooltip" title="Inside Light" class="has-tooltip box device off"><img src="/img/sun_w.png" class="icon"/><div class="info">Off</div></div>
-        <div data-toggle="tooltip" title="Inside Pump" class="has-tooltip box device off"><img src="/img/water_w.png" class="icon"/><div class="info">Off</div></div>
-        <div data-toggle="tooltip" title="Inside Fan" class="has-tooltip box device on"><img src="/img/fan_w.png" class="icon"/><div class="info">On</div></div>
-        <div data-toggle="tooltip" title="Inside Heater" class="has-tooltip box device off"><img src="/img/hot_w.png" class="icon"/><div class="info">Off</div></div>
       </div>
       <div class="window outside">
         <h2>Outside</h2>
-        <div data-toggle="tooltip" title="Outside Temperature" class="has-tooltip box sensor"><img src="/img/temperature_w.png" class="icon"/><div class="info">70F</div></div>
       </div>
       <div class="window underground">
         <h2>Ground</h2>
-        <div data-toggle="tooltip" title="Ground Temperature" class="has-tooltip box sensor"><img src="/img/temperature_w.png" class="icon"/><div class="info">67F</div></div>
-        <div data-toggle="tooltip" title="Ground Fan" class="has-tooltip box device off"><img src="/img/fan_w.png" class="icon"/><div class="info">Off</div></div>
       </div>
     </div>
     </script>
@@ -175,6 +174,7 @@ window.Meta.schedules = {{ $schedules }};
     <script src="/js/entities/common.js"></script>
     <script src="/js/entities/header.js"></script>
     <script src="/js/entities/device.js"></script>
+    <script src="/js/entities/sensor.js"></script>
     <script src="/js/common/views.js"></script>
 
     <script src="/js/apps/devices/devices_app.js"></script>

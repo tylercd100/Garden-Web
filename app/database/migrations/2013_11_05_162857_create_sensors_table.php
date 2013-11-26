@@ -15,6 +15,7 @@ class CreateSensorsTable extends Migration {
 	    {
 	        $table->increments('id');
 	        $table->string('name');
+	        $table->string('location');
 	        $table->string('type');
 	        $table->integer('pin');
 	        $table->integer('value');
