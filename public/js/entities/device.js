@@ -86,11 +86,11 @@ App.module("Entities", function(Entities, App, Backbone, Marionette, $, _){
     }
   };
 
-  App.reqres.setHandler("device:entities", function(){
+  App.reqres.setHandler("entities:device", function(){
     return API.getDeviceEntities();
   });
 
-  App.reqres.setHandler("device:entity", function(id){
+  App.reqres.setHandler( "entity:device" , function(id){
     return API.getDeviceEntity(id);
   });
 });

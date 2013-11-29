@@ -10,11 +10,8 @@ window.Meta.schedules = {{ $schedules }};
 </script>
     <div id="header-region"></div>
 
-    <div id="main-region" class="container">
-      <p>Here is static content in the web page. You'll notice that it gets replaced by our app as soon as we start it.</p>
+    <div id="main-region" class="center-block" >
     </div>
-
-    <svg><circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red"></circle></svg>
 
     <div id="dialog-region"></div>
 
@@ -87,10 +84,28 @@ window.Meta.schedules = {{ $schedules }};
       <div id="spinner"></div>
     </script>
 
-    <script type="text/template" id="overview-main">
-      <div>Devices</div>
-      <div>Sensors</div>
+    <script type="text/template" id="overview-sensor">
+      <div data-toggle="tooltip" title="<%= name %>" class="has-tooltip box sensor"><img src="/img/<%= type %>_w.png" class="icon"/><div class="info"><%= value %><%= (type == 'temperature' ? 'F' : '%') %></div></div>
     </script>
+
+    <script type="text/template" id="overview-device">
+      <div data-toggle="tooltip" title="<%= name %>" class="has-tooltip box device <%= (state == '1' ? 'on' : 'off') %>"><img src="/img/<%= type %>_w.png" class="icon"/><div class="info"><%= (state == '1' ? 'On' : 'Off') %></div></div>
+    </script>
+
+    <script type="text/template" id="overview-main">
+      <% _.each(items,function(i){ %>
+        <h2><%= i.name %></h2>
+        <div id="<%= i.name %>-region"><%= i.name %></div>
+      <% }) %>
+    </script>
+
+    <script type="text/template" id="overview-location">
+      <div id="sensor-region"></div>
+      <div id="device-region"></div>
+    </script>
+
+    <script type="text/template" id="overview-devices"></script>
+    <script type="text/template" id="overview-sensors"></script>
 
     <script type="text/template" id="device-form">
       <form>
@@ -142,6 +157,7 @@ window.Meta.schedules = {{ $schedules }};
     <script src="/js/vendor/backbone.marionette.js"></script>
     <script src="/js/vendor/spin.js"></script>
     <script src="/js/vendor/spin.jquery.js"></script>
+    <script src="/js/vendor/bootstrap.min.js"></script>
 
     <script src="/js/apps/config/marionette/regions/dialog.js"></script>
     <script src="/js/app.js"></script>
@@ -149,6 +165,7 @@ window.Meta.schedules = {{ $schedules }};
     <script src="/js/entities/common.js"></script>
     <script src="/js/entities/header.js"></script>
     <script src="/js/entities/device.js"></script>
+    <script src="/js/entities/sensor.js"></script>
     <script src="/js/common/views.js"></script>
 
     <script src="/js/apps/devices/devices_app.js"></script>
@@ -175,5 +192,18 @@ window.Meta.schedules = {{ $schedules }};
 
     <script type="text/javascript">
       App.start();
+
+      $(function(){
+        resize();
+      })
+
+      $(window).resize(resize);
+
+      function resize(){
+        var h = $(window).height();
+        console.log(h)
+        $('#main-region').height(h);
+      }
     </script>
+
 @stop

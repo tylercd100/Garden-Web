@@ -24,5 +24,6 @@ Route::get('users', function(){
 });
 
 Route::resource('device','DeviceController');
+Route::resource('sensor','SensorController');
 Route::resource('schedule','ScheduleController');
 
