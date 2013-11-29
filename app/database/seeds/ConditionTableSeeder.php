@@ -13,7 +13,7 @@ class ConditionTableSeeder extends Seeder {
 
         // My Setup
         // Condition::create(array('type'=>'value','device_id' => 1,'sensor_id' => 1,'operator' => '<','value' => 70)); //if inside temperature is less than 71 turn on light one
-        
+
         // My Dad's Setup
         // Condition::create(array('type'=>'value','device_id' => 1,'sensor_id' => 1,'operator' => '>','value' => 72)); //if inside temperature is less than 71 turn on light one
         // Condition::create(array('type'=>'sensor','device_id' => 2,'sensor_id' => 1,'operator' => '>','comp_sensor_id' => 2)); //if inside temperature sensor is less than outside sensor turn on heater
