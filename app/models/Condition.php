@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Condition extends Eloquent {
 	public function device()
     {
