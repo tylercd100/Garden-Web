@@ -18,8 +18,8 @@ App.module("Entities", function(Entities, App, Backbone, Marionette, $, _){
   var initializeHeaders = function(){
     Entities.headers = new Entities.HeaderCollection([
       { name: "Overview", url: "overview", navigationTrigger: "overview:show" },
-      { name: "Statistics", url: "stats", navigationTrigger: "about:show" },
-      { name: "Devices", url: "devices", navigationTrigger: "devices:list" },
+      { name: "Charts", url: "charts", navigationTrigger: "charts:list" },
+      //{ name: "Devices", url: "devices", navigationTrigger: "devices:list" },
     ]);
   };
 

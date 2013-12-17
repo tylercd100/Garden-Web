@@ -26,6 +26,11 @@ class DatabaseSeeder extends Seeder {
 
 		Eloquent::unguard();
 		
+		$this->call('SensorRecordTableSeeder');
+		$this->command->info('Sensor Record table seeded!');
+
+		Eloquent::unguard();
+		
 		$this->call('ConditionTableSeeder');
 		$this->command->info('Condition table seeded!');
 	}

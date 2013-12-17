@@ -9,7 +9,7 @@ App.module("HeaderApp", function(Header, App, Backbone, Marionette, $, _){
     App.HeaderApp.List.Controller.setActiveHeader(name);
   });
 
-  Header.on("start", function(){
+  App.addInitializer(function(){
     API.listHeader();
   });
 });

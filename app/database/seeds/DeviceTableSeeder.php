@@ -12,14 +12,20 @@ class DeviceTableSeeder extends Seeder {
         DB::table('devices')->delete();
 
         // My Setup
-        // Device::create(array('pin'=>6,'location' => 'inside',   'name' => 'Light 1',    'type' => 'light', 'state' => 0));
-        // Device::create(array('pin'=>7,'location' => 'inside',   'name' => 'Light 2',    'type' => 'light', 'state' => 0));
-        // Device::create(array('pin'=>8,'location' => 'inside',   'name' => 'Pump 1',     'type' => 'pump', 'state' => 0));
+        Device::create(array('pin'=>6,'location' => 'inside',   'name' => 'Light 1',    'type' => 'light', 'state' => 0));
+        Device::create(array('pin'=>7,'location' => 'inside',   'name' => 'Light 2',    'type' => 'light', 'state' => 0));
+        Device::create(array('pin'=>8,'location' => 'inside',   'name' => 'Pump 1',     'type' => 'pump', 'state' => 0));
 
         // My Dad's Setup
+<<<<<<< HEAD
         Device::create(array('pin'=>6, 'location' => 'inside', 'name' => 'Light 1',    'type' => 'light',  'state' => 0));
         Device::create(array('pin'=>7, 'location' => 'inside', 'name' => 'Ground Fan', 'type' => 'fan',    'state' => 0));
         Device::create(array('pin'=>8, 'location' => 'inside', 'name' => 'Heater',     'type' => 'heater', 'state' => 1));
+=======
+        // Device::create(array('pin'=>5, 'location' => 'inside', 'name' => 'Light 1',    'type' => 'light',  'state' => 0));
+        // Device::create(array('pin'=>6, 'location' => 'ground', 'name' => 'Ground Fan', 'type' => 'fan',    'state' => 0));
+        // Device::create(array('pin'=>7, 'location' => 'inside', 'name' => 'Heater',     'type' => 'heater', 'state' => 1));
+>>>>>>> afeeaff13200dc2542c2ca300c6fb4756e6826d3
     }	
 
 

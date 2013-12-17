@@ -12,10 +12,9 @@ class ScheduleTableSeeder extends Seeder {
         DB::table('schedules')->delete();
 
         // My Setup
-        // Schedule::create(array('device_id' => 1, 'day' => 0, 'hour' => 8, 'duration' => 60*60*14));
-        // Schedule::create(array('device_id' => 2, 'day' => 0, 'hour' => 8, 'duration' => 60*60*14));
-        // Schedule::create(array('device_id' => 3, 'day' => 1, 'hour' => 9, 'duration' => 7));
-        // Schedule::create(array('device_id' => 3, 'day' => 4, 'hour' => 9, 'duration' => 7));
+        Schedule::create(array('device_id' => 1, 'day' => 0, 'hour' => 8, 'duration' => 60*60*14));
+        Schedule::create(array('device_id' => 2, 'day' => 0, 'hour' => 8, 'duration' => 60*60*14));
+        Schedule::create(array('device_id' => 3, 'day' => 0, 'hour' => 9, 'duration' => 30));
 
         // My Dad's Setup
         // Schedule::create(array('device_id' => 1, 'day' => 2, 'hour' => 9, 'duration' => 60*60*12));
