@@ -13,7 +13,7 @@ class SensorTableSeeder extends Seeder {
 
         // My Setup
         Sensor::create(array('pin'=>0,'location' => 'inside', 'name' => 'Inside Light',   'type' => 'light',    'value' => '0'));
-        Sensor::create(array('pin'=>1,'location' => 'inside', 'name' => 'Inside Something',   'type' => 'something',    'value' => '0'));
+        // Sensor::create(array('pin'=>1,'location' => 'inside', 'name' => 'Inside Something',   'type' => 'something',    'value' => '0'));
         // Sensor::create(array('pin'=>2,'location' => 'inside', 'name' => 'Inside Humidity',   'type' => 'humidity',	'value' => '70'));
         
         // My Dad's Setup

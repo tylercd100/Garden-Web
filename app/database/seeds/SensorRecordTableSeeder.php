@@ -12,13 +12,13 @@ class SensorRecordTableSeeder extends Seeder {
         DB::table('sensor_records')->delete();
 
         // My Setup
-        for($j = 1; $j <= 2; $j+=1){
-            $date = new DateTime('7 days ago');
-            for($i = 0; $i < 4*24*7; $i+=1){
-                SensorRecord::create(array('sensor_id'=>$j, 'type' => 'something',	'value' => rand(0,100), 'created_at' => $date->format('Y-m-d H:i:s')));
-                date_add($date,date_interval_create_from_date_string('15 minutes'));
-            }
-        }
+        // for($j = 1; $j <= 2; $j+=1){
+        //     $date = new DateTime('7 days ago');
+        //     for($i = 0; $i < 4*24*7; $i+=1){
+        //         SensorRecord::create(array('sensor_id'=>$j, 'type' => 'something',	'value' => rand(0,100), 'created_at' => $date->format('Y-m-d H:i:s')));
+        //         date_add($date,date_interval_create_from_date_string('15 minutes'));
+        //     }
+        // }
         // Sensor::create(array('pin'=>2,'location' => 'inside', 'name' => 'Inside Humidity',   'type' => 'humidity',	'value' => '70'));
         
         // My Dad's Setup

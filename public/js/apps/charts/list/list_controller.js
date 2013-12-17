@@ -26,7 +26,7 @@ App.module("Charts.List", function(List, App, Backbone, Marionette, $, _){
 				var all = ndx.groupAll();
 
     			var dailyDimension = ndx.dimension(function (d) {
-			        return d3.time.hour(d.dd);
+			        return d3.time.minute(d.dd);
 			    });
 
 				view.on('show',function(){
@@ -59,7 +59,7 @@ App.module("Charts.List", function(List, App, Backbone, Marionette, $, _){
 					        .renderArea(true)
 					        .width(990)
 					        .height(200)
-					        .transitionDuration(1000)
+					        //.transitionDuration(200)
 					        .margins({top: 0, right: 50, bottom: 25, left: 40})
 					        .dimension(dailyDimension)
 					        .mouseZoomable(true)
