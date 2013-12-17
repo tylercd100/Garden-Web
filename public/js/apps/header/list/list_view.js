@@ -22,7 +22,7 @@ App.module("HeaderApp.List", function(List, App, Backbone, Marionette, $, _){
 
   List.Headers = Marionette.CompositeView.extend({
     template: "#header-template",
-    className: "navbar navbar-inverse navbar-fixed-top",
+    className: "navbar navbar-default navbar-fixed-top",
     itemView: List.Header,
     itemViewContainer: "ul",
 

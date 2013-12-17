@@ -73,6 +73,10 @@ App.module("Overview.Show", function(Show, App, Backbone, Marionette, $, _){
 						
 					});
 
+					devicesView.on('render',function(){
+						devicesView.$el.find('.has-tooltip').tooltip({placement:'bottom'});
+					})
+
 					//render layout for this location when the main view is shown
 					view.on('show',function(){
 						view[l+"Region"].show(layoutView);

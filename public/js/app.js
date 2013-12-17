@@ -26,3 +26,8 @@ App.on("initialize:after", function(){
     }
   }
 });
+
+//global functions
+slug = function(str){
+  return str.replace(' ','-');
+}

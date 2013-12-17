@@ -16,14 +16,14 @@ window.Meta.schedules = {{ $schedules }};
     <div id="dialog-region"></div>
 
     <script type="text/template" id="header-template">
-      <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#devices">Garden HQ</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav"></ul>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#overview">My Greenhouse</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav"></ul>
           </div>
         </div>
-      </div>
     </script>
 
     <script type="text/template" id="header-link">
@@ -82,6 +82,14 @@ window.Meta.schedules = {{ $schedules }};
       <h1><%= title %></h1>
       <p><%= message %></p>
       <div id="spinner"></div>
+    </script>
+
+    <script type="text/template" id="charts-main">
+      <div id="range-chart"></div>
+      <% _.each(items,function(i){ %>
+        <h6><%= i.name %></h6>
+        <div id="<%= slug(i.name) %>-chart"></div>
+      <% }) %>
     </script>
 
     <script type="text/template" id="overview-sensor">
@@ -166,6 +174,7 @@ window.Meta.schedules = {{ $schedules }};
     <script src="/js/entities/header.js"></script>
     <script src="/js/entities/device.js"></script>
     <script src="/js/entities/sensor.js"></script>
+    <script src="/js/entities/sensor_records.js"></script>
     <script src="/js/common/views.js"></script>
 
     <script src="/js/apps/devices/devices_app.js"></script>
@@ -185,6 +194,10 @@ window.Meta.schedules = {{ $schedules }};
     <script src="/js/apps/overview/overview_app.js"></script>
     <script src="/js/apps/overview/show/show_view.js"></script>
     <script src="/js/apps/overview/show/show_controller.js"></script>
+
+    <script src="/js/apps/charts/charts_app.js"></script>
+    <script src="/js/apps/charts/list/list_view.js"></script>
+    <script src="/js/apps/charts/list/list_controller.js"></script>
 
     <script src="/js/apps/header/header_app.js"></script>
     <script src="/js/apps/header/list/list_view.js"></script>
