@@ -12,7 +12,7 @@ class ConditionTableSeeder extends Seeder {
         DB::table('conditions')->delete();
 
         // My Setup
-        // Condition::create(array('type'=>'value','device_id' => 1,'sensor_id' => 1,'operator' => '<','value' => 70)); //if inside temperature is less than 71 turn on light one
+        // Condition::create(array('type'=>'value','device_id' => 1,'sensor_id' => 1,'operator' => '>','value' => 30)); //if inside temperature is less than 71 turn on light one
 
         // My Dad's Setup
         // Condition::create(array('type'=>'value','device_id' => 1,'sensor_id' => 1,'operator' => '>','value' => 72)); //if inside temperature is less than 71 turn on light one

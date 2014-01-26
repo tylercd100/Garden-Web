@@ -12,26 +12,18 @@ class SensorTableSeeder extends Seeder {
         DB::table('sensors')->delete();
 
         // My Setup
-        Sensor::create(array('pin'=>0,'location' => 'inside', 'name' => 'Inside Light',   'type' => 'light',    'value' => '0'));
+        Sensor::create(array('pin'=>2,'location' => 'inside', 'name' => 'Inside Temperature',   'type' => 'temperature',    'value' => '0'));
         // Sensor::create(array('pin'=>1,'location' => 'inside', 'name' => 'Inside Something',   'type' => 'something',    'value' => '0'));
         // Sensor::create(array('pin'=>2,'location' => 'inside', 'name' => 'Inside Humidity',   'type' => 'humidity',	'value' => '70'));
         
         // My Dad's Setup
-<<<<<<< HEAD
-        Sensor::create(array('pin'=>2, 'location' => 'inside',  'name' => 'Inside Temperature',  'type' => 'temperature', 'value' => '60'));
-        Sensor::create(array('pin'=>2, 'location' => 'inside',  'name' => 'Inside Humidity',     'type' => 'humidity',    'value' => '20'));
-        Sensor::create(array('pin'=>3, 'location' => 'outside', 'name' => 'Outside Temperature', 'type' => 'temperature', 'value' => '50'));
-        Sensor::create(array('pin'=>3, 'location' => 'outside', 'name' => 'Outside Humidity',    'type' => 'humidity',    'value' => '25'));
-        //Sensor::create(array('pin'=>4, 'location' => 'ground',  'name' => 'Ground Temperature',  'type' => 'temperature', 'value' => '70'));
-        //Sensor::create(array('pin'=>4, 'location' => 'ground',  'name' => 'Ground Humidity',     'type' => 'humidity',    'value' => '30'));
-=======
-        // Sensor::create(array('pin'=>1, 'location' => 'inside',  'name' => 'Inside Temperature',  'type' => 'temperature', 'value' => '60'));
-        // Sensor::create(array('pin'=>1, 'location' => 'inside',  'name' => 'Inside Humidity',     'type' => 'humidity',    'value' => '20'));
-        // Sensor::create(array('pin'=>2, 'location' => 'outside', 'name' => 'Outside Temperature', 'type' => 'temperature', 'value' => '50'));
-        // Sensor::create(array('pin'=>2, 'location' => 'outside', 'name' => 'Outside Humidity',    'type' => 'humidity',    'value' => '25'));
-        // Sensor::create(array('pin'=>3, 'location' => 'ground',  'name' => 'Ground Temperature',  'type' => 'temperature', 'value' => '70'));
-        // Sensor::create(array('pin'=>3, 'location' => 'ground',  'name' => 'Ground Humidity',     'type' => 'humidity',    'value' => '30'));
->>>>>>> afeeaff13200dc2542c2ca300c6fb4756e6826d3
+        // Sensor::create(array('pin'=>2, 'location' => 'inside',  'name' => 'Inside Temperature',  'type' => 'temperature', 'value' => '60'));
+        // Sensor::create(array('pin'=>2, 'location' => 'inside',  'name' => 'Inside Humidity',     'type' => 'humidity',    'value' => '20'));
+        // Sensor::create(array('pin'=>3, 'location' => 'outside', 'name' => 'Outside Temperature', 'type' => 'temperature', 'value' => '50'));
+        // Sensor::create(array('pin'=>3, 'location' => 'outside', 'name' => 'Outside Humidity',    'type' => 'humidity',    'value' => '25'));
+        // Sensor::create(array('pin'=>4, 'location' => 'ground',  'name' => 'Ground Temperature',  'type' => 'temperature', 'value' => '70'));
+        // Sensor::create(array('pin'=>4, 'location' => 'ground',  'name' => 'Ground Humidity',     'type' => 'humidity',    'value' => '30'));
+
     }	
 
 

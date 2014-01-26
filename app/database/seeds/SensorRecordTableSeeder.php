@@ -9,7 +9,7 @@ class SensorRecordTableSeeder extends Seeder {
 	 */
 	public function run()
     {
-        DB::table('sensor_records')->delete();
+        //DB::table('sensor_records')->delete();
 
         // My Setup
         // for($j = 1; $j <= 2; $j+=1){

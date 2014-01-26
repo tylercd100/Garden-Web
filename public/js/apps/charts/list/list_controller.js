@@ -75,7 +75,8 @@ App.module("Charts.List", function(List, App, Backbone, Marionette, $, _){
 					            return d.value.avg;
 					        })
 					        .title(function(d){
-					        	return d.data.value.avg;
+					        	console.log(d.data)
+					        	return d.data.value.avg+' ['+dateFormat(d.data.key)+']';
 					        })
 					})
 
